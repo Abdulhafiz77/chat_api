@@ -6,9 +6,13 @@ import Cors from 'cors';
 import morgan from 'morgan';
 import { routes } from './router';
 import WebSocket from "./socket/index.socket";
+import * as swaggerUi from 'swagger-ui-express'
 import path from "path";
 import * as Http from "http";
 import { ChatSocket } from './controllers';
+
+
+const swaggerJSDoc = require('../swagger');
 
 class ServerModule {
 
@@ -35,6 +39,12 @@ class ServerModule {
         this.app.use((req: Request, res: Response, next: NextFunction) => {
             res.setHeader('Access-Control-Expose-Headers', 'original-name, Content-Disposition');
             next();
+        });
+        this.app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc));
+        this.app.get('/api', (req: Request, res: Response) => {
+            res.status(200).json({
+                message: 'Server is running!'
+            });
         });
         routes(this.app);
         this.http = Http.createServer(this.app);

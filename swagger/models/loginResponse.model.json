@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "middleName": { "type": "string" },
+        "status": { "type": "integer" },
+        "email": { "type":  "string" },
+        "token": { "type": "string" },
+        "refreshToken": { "type": "string" },
+        "chats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Chat"
+          }
+        }
+      }
+    },
+    "success": { "type": "boolean" }
+  },
+  "example": {
+    "data": {
+      "id": 10,
+      "firstName": "John",
+      "lastName": "Doe",
+      "status": 10,
+      "email": "john_doe@gmail.com",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjYyMzc1OTI0LCJleHAiOjE2NjI0NjIzMjR9.Gl8H793f5Bzwur6c4XUxNLBhp0f1tlgG9Yh4A31km_k",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjYyMzc1OTI0LCJleHAiOjE2NjI1NDg3MjR9.6bx-5LMBZFoyaIIUHvTwy5PNMj4u-lRm13npwxbRsxQ",
+      "chats": [
+        {
+          "interlocutor": {
+            "id": 52,
+            "firstName": "Mark",
+            "lastName": "Zuckerberg",
+            "email": "mark_meta@gmail.com"
+          },
+          "room": "2d52e031-7039-48bb-8052-056649670bd1"
+        }
+      ]
+    },
+    "success": true
+  }
+}

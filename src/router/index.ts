@@ -19,7 +19,7 @@ export const routes = (app: express.Application) => {
 
     expressRouter['prefix']('/api', app => {
 
-        app['prefix']('/staff', data => {
+        app['prefix']('/auth', data => {
             authRoutes(data)
         });
         app['prefix']('/chat', data => {
